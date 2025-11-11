@@ -5,59 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { LinkArrow } from "@/components/LinkArrow";
 import { useTheme } from "@/components/ThemeProvider";
-
-const projects = [
-  {
-    id: "mission-control",
-    name: "Mission Control",
-    description:
-      "Command center that lets Wing ops orchestrate airspace, manage fleets, and keep autonomy in sync with human reviews.",
-    tech: ["Next.js", "TypeScript", "Postgres", "Framer Motion"],
-    year: "2024",
-    image: "/projects/project-1.svg",
-    demo: "https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4",
-  },
-  {
-    id: "sprint-rooms",
-    name: "Sprint Rooms",
-    description:
-      "Realtime dashboard for Berkeley build pods to host critiques, track experiments, and archive live collaboration notes.",
-    tech: ["React", "Node.js", "Supabase", "WebSockets"],
-    year: "2024",
-    image: "/projects/project-2.svg",
-    demo: "https://storage.googleapis.com/coverr-main/mp4/Night-Lights.mp4",
-  },
-  {
-    id: "labs-atlas",
-    name: "Labs Atlas",
-    description:
-      "Spatial review workflow for autonomy experiments with layered telemetry, label QA, and quick keyboard pilots.",
-    tech: ["Three.js", "Python", "PyTorch", "Redis"],
-    year: "2023",
-    image: "/projects/project-3.svg",
-    demo: "https://storage.googleapis.com/coverr-main/mp4/Footboys.mp4",
-  },
-  {
-    id: "orbit-crm",
-    name: "Orbit CRM",
-    description:
-      "Trusted relationship tracker for early-stage teams, built with a cinematic interface and gentle, opinionated flows.",
-    tech: ["Next.js", "PlanetScale", "Tailwind", "Clerk"],
-    year: "2023",
-    image: "/projects/project-4.svg",
-    demo: "https://storage.googleapis.com/coverr-main/mp4/White-Windmills.mp4",
-  },
-  {
-    id: "signal-playbook",
-    name: "Signal Playbook",
-    description:
-      "Knowledge surface for sharing ops rituals, incident retros, and nuanced playbooks across distributed teams.",
-    tech: ["Remix", "SQLite", "Cloudflare Workers", "Shadcn"],
-    year: "2022",
-    image: "/projects/project-5.svg",
-    demo: "https://storage.googleapis.com/coverr-main/mp4/Drift.mp4",
-  },
-];
+import { projects } from "@/data/projects";
 
 export function ProjectsSection({ className = "" }: { className?: string }) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -135,7 +83,7 @@ export function ProjectsSection({ className = "" }: { className?: string }) {
                 style={{ zIndex: isActive ? 70 : 10 }}
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-background">
-                  {isActive ? (
+                  {isActive && project.demo ? (
                     <video
                       key={project.id}
                       src={project.demo}
@@ -148,11 +96,13 @@ export function ProjectsSection({ className = "" }: { className?: string }) {
                     />
                   ) : (
                     <Image
-                      src={project.image}
-                      alt={project.name}
+                      src={project.image.src}
+                      alt={project.image.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
+                      placeholder="blur"
+                      blurDataURL={project.image.blurDataURL}
                       priority={project.id === projects[0].id}
                     />
                   )}
@@ -160,12 +110,12 @@ export function ProjectsSection({ className = "" }: { className?: string }) {
 
                 <div className="flex items-center justify-between px-2 pb-2 pt-4">
                   <a
-                    href={project.demo ?? "#"}
+                    href={project.link || "#"}
                     target="_blank"
                     rel="noreferrer"
                     className="group inline-flex items-center gap-2 font-serif-italic text-2xl text-text-primary"
                   >
-                    {project.name}
+                    {project.title}
                     <LinkArrow />
                   </a>
                   <span className="text-xs uppercase tracking-[0.35em] text-text-muted">
@@ -195,16 +145,12 @@ export function ProjectsSection({ className = "" }: { className?: string }) {
                     >
                     <div className={`rounded-[1.5rem] border border-text-primary/15 bg-background p-4 text-text-primary ${detailShadowClass}`}>
                         <div className="space-y-4 text-text-muted">
-                          <p className="text-base leading-relaxed">{project.description}</p>
+                          <p className="text-base leading-relaxed">{project.highlight}</p>
                           <div>
                             <p className="text-[0.65rem] uppercase tracking-[0.35em]">Tech Stack</p>
                             <p className="mt-2 text-sm leading-relaxed">
                               {project.tech.join(" · ")}
                             </p>
-                          </div>
-                          <div>
-                            <p className="text-[0.65rem] uppercase tracking-[0.35em]">Created</p>
-                            <p className="mt-2 text-sm">{project.year}</p>
                           </div>
                         </div>
                       </div>

@@ -5,8 +5,9 @@ export type Project = {
   year: number;
   tech: string[];
   highlight: string;
-  metrics: string[];
+  metrics?: string[];
   link: string;
+  demo?: string;
   image: {
     src: string;
     alt: string;
@@ -22,63 +23,84 @@ export const projects: Project[] = [
     id: "code-chatbot",
     title: "Code Chatbot",
     role: "Creator",
-    year: 2025,
-    tech: ["Next.js", "RAG", "Pinecone"],
-    highlight:
-      "Natural language interface that lets engineers query massive repositories as if they were chatting with a teammate.",
-    metrics: ["10k+ LOC indexed", "40% faster onboarding"],
-    link: "https://github.com",
-    image: {
-      src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a",
-      alt: "Screenshot of AI powered code chatbot UI",
-      blurDataURL: blur,
-    },
-  },
-  {
-    id: "wing-ops",
-    title: "Wing Ops Console",
-    role: "Lead Engineer",
     year: 2024,
-    tech: ["Next.js", "tRPC", "Postgres", "Tailwind"],
+    tech: ["Next.js", "LangChain", "Pinecone", "OpenAI"],
     highlight:
-      "Mission control for Wing’s internal tools with live fleet telemetry, approvals, and runway level insights.",
-    metrics: ["Managed 6 internal services", "99.95% uptime"],
-    link: "https://example.com",
+      "Conversational overlay that lets engineers interrogate large repositories with natural language and inline code diffs.",
+    metrics: ["10k+ LOC indexed", "2k+ monthly chats"],
+    link: "https://github.com/warren147/code-chatbot",
+    demo: "/projects/chatbot_demo.mov",
     image: {
-      src: "https://images.unsplash.com/photo-1518770660439-4636190af475",
-      alt: "Dashboard mock showing operations metrics",
+      src: "/projects/chatbot_TN.jpg",
+      alt: "Screens from the code chatbot interface",
       blurDataURL: blur,
     },
   },
   {
-    id: "mlops-kit",
-    title: "MLOps Kit",
+    id: "voronoi-playground",
+    title: "Voronoi Diagram Visualizer",
+    role: "Product Engineer",
+    year: 2024,
+    tech: ["Java", "JavaAWT"],
+    highlight:
+      "An application provides visual representation of the Voronoi Diagram given a set of points with multiple metric.",
+    metrics: ["60 FPS on mobile", "<35% GPU utilization"],
+    link: "https://github.com/warren147/Voronoi_Diagram",
+    demo: "/projects/voronoi_demo.mov",
+    image: {  
+      src: "/projects/test.png",
+      alt: "Voronoi diagram rendered on a gradient background",
+      blurDataURL: blur,
+    },
+  },
+  {
+    id: "notiom",
+    title: "Notiom",
+    role: "Engineer",
+    year: 2024,
+    tech: ["React", "Typescript", "Node.js", "MongoDB"],
+    highlight:
+      "Developed a React web app that allows users save, edit, and share documents that are persisted to a MongoDB database.",
+    metrics: ["150+ reusable presets", "Exports in <4s"],
+    link: "https://github.com/warren147/Notiom",
+    demo: "/projects/notiom_demo.mov",
+    image: {
+      src: "/projects/notiom_TN.avif",
+      alt: "Collage of animated frames from Notiom",
+      blurDataURL: blur,
+    },
+  },
+  {
+    id: "cube-simulator",
+    title: "Cube Solver",
+    role: "Engineer",
+    year: 2024,
+    tech: ["Python", "PyGame", "Tkinter"],
+    highlight:
+      "A Python GUI application using Tkinter that generates a solution to a 3 x 3 Rubik’s Cube with Kociemba’s algorithm.",
+    metrics: ["<1s solve preview", "8x faster scrambles"],
+    link: "https://github.com/warren147/cube_solver",
+    demo: "/projects/cube_demo.mov",
+    image: {
+      src: "/projects/rbSolver_TN.jpg",
+      alt: "Rubik’s cube rendered with dramatic lighting",
+      blurDataURL: blur,
+    },
+  },
+  {
+    id: "pong-lab",
+    title: "Pong",
     role: "Builder",
     year: 2023,
-    tech: ["Python", "FastAPI", "Ray", "Docker"],
+    tech: ["Java", "JavaAWT"],
     highlight:
-      "Composable toolkit for spinning up training pipelines with experiment tracking, auto-scaling, and guardrails.",
-    metrics: ["65% faster model iteration", "Unified logging"],
-    link: "https://example.com",
+      "Pong game for fun!",
+    metrics: ["2 ms input latency", "Dynamic pitch mapping"],
+    link: "https://github.com/warren147/Pong",
+    demo: "/projects/pong_demo.mov",
     image: {
-      src: "https://images.unsplash.com/photo-1517433456452-f9633a875f6f",
-      alt: "Developer workstation with graphs",
-      blurDataURL: blur,
-    },
-  },
-  {
-    id: "studio-ui",
-    title: "Studio UI System",
-    role: "Product Engineer",
-    year: 2022,
-    tech: ["React", "Storybook", "Figma Tokens"],
-    highlight:
-      "Unified component library powering marketing sites, dashboards, and experiment sandboxes across teams.",
-    metrics: ["75+ components", "Shared across 4 teams"],
-    link: "https://example.com",
-    image: {
-      src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-      alt: "Component system grids on a screen",
+      src: "/projects/Pong_TN.jpg",
+      alt: "Stylized pong interface with gradients",
       blurDataURL: blur,
     },
   },
