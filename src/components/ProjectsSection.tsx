@@ -4,6 +4,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { LinkArrow } from "@/components/LinkArrow";
+import { useTheme } from "@/components/ThemeProvider";
 
 const projects = [
   {
@@ -60,6 +61,7 @@ const projects = [
 
 export function ProjectsSection({ className = "" }: { className?: string }) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const { theme } = useTheme();
   const hoverTimeoutRef = useRef<number | null>(null);
 
   const scheduleHover = (id: string) => {
@@ -105,6 +107,14 @@ export function ProjectsSection({ className = "" }: { className?: string }) {
           {projects.map((project) => {
             const isActive = hoveredId === project.id;
             const isDimmed = hoveredId !== null && !isActive;
+            const cardShadowClass =
+              theme === "bright"
+                ? "shadow-none"
+                : "shadow-[0_20px_60px_rgba(0,0,0,0.65)]";
+            const detailShadowClass =
+              theme === "bright"
+                ? "shadow-none"
+                : "shadow-[0_15px_40px_rgba(0,0,0,0.35)]";
 
             return (
               <motion.div
@@ -114,7 +124,7 @@ export function ProjectsSection({ className = "" }: { className?: string }) {
                   layout: { type: "spring", stiffness: 140, damping: 18 },
                   duration: 0.25,
                 }}
-                className={`relative flex flex-col rounded-[2rem] border border-text-primary/10 bg-background p-3 shadow-none dark:shadow-[0_20px_60px_rgba(0,0,0,0.65)] transition duration-300 self-start ${
+                className={`relative flex flex-col rounded-[2rem] border border-text-primary/10 bg-background p-3 ${cardShadowClass} transition duration-300 self-start ${
                   isDimmed ? "blur-[2px] opacity-30" : "opacity-100"
                 } ${isActive ? "bg-surface" : ""}`}
                 onMouseEnter={() => scheduleHover(project.id)}
@@ -183,7 +193,7 @@ export function ProjectsSection({ className = "" }: { className?: string }) {
                       }}
                       className="overflow-hidden px-2"
                     >
-                      <div className="rounded-[1.5rem] border border-text-primary/15 bg-background p-4 text-text-primary">
+                    <div className={`rounded-[1.5rem] border border-text-primary/15 bg-background p-4 text-text-primary ${detailShadowClass}`}>
                         <div className="space-y-4 text-text-muted">
                           <p className="text-base leading-relaxed">{project.description}</p>
                           <div>
