@@ -9,7 +9,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://warrenchang.dev"),
   title: {
-    default: "boweichang.cv",
+    default: "bowei.space",
     template: "%s · Warren Chang",
   },
 };
