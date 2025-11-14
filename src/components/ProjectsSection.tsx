@@ -70,11 +70,7 @@ const projects = [
     metrics: ["10k+ LOC indexed", "2k+ monthly chats"],
     link: "https://github.com/warren147/code-chatbot",
     demo: "/projects/chatbot_demo.mov",
-    image: {
-      src: "/projects/chatbot_TN.jpg",
-      alt: "Screens from the code chatbot interface",
-      blurDataURL: blur,
-    },
+    image: "/projects/chatbot_TN.jpg",
   },
   {
     id: "voronoi-playground",
@@ -87,11 +83,7 @@ const projects = [
     metrics: ["60 FPS on mobile", "<35% GPU utilization"],
     link: "https://github.com/warren147/Voronoi_Diagram",
     demo: "/projects/voronoi_demo.mov",
-    image: {  
-      src: "/projects/test.png",
-      alt: "Voronoi diagram rendered on a gradient background",
-      blurDataURL: blur,
-    },
+    image: "/projects/test.png"
   },
   {
     id: "notiom",
@@ -104,11 +96,7 @@ const projects = [
     metrics: ["150+ reusable presets", "Exports in <4s"],
     link: "https://github.com/warren147/Notiom",
     demo: "/projects/notiom_demo.mov",
-    image: {
-      src: "/projects/notiom_TN.avif",
-      alt: "Collage of animated frames from Notiom",
-      blurDataURL: blur,
-    },
+    image: "/projects/notiom_TN.avif"
   },
   {
     id: "cube-simulator",
@@ -121,11 +109,7 @@ const projects = [
     metrics: ["<1s solve preview", "8x faster scrambles"],
     link: "https://github.com/warren147/cube_solver",
     demo: "/projects/cube_demo.mov",
-    image: {
-      src: "/projects/rbSolver_TN.jpg",
-      alt: "Rubik’s cube rendered with dramatic lighting",
-      blurDataURL: blur,
-    },
+    image: "/projects/rbSolver_TN.jpg"
   },
   {
     id: "pong-lab",
@@ -138,11 +122,7 @@ const projects = [
     metrics: ["2 ms input latency", "Dynamic pitch mapping"],
     link: "https://github.com/warren147/Pong",
     demo: "/projects/pong_demo.mov",
-    image: {
-      src: "/projects/Pong_TN.jpg",
-      alt: "Stylized pong interface with gradients",
-      blurDataURL: blur,
-    },
+    image: "/projects/Pong_TN.jpg"
   },
 ];
 
