@@ -187,7 +187,7 @@ export function ProjectsSection({ className = "" }: { className?: string }) {
                   ) : (
                     <Image
                       src={project.image}
-                      alt={project.name}
+                      alt={project.name ?? "Project image"}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
