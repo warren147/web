@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { LinkArrow } from "@/components/LinkArrow";
@@ -148,7 +147,7 @@ export function ProjectsSection({ className = "" }: { className?: string }) {
       <div className="space-y-6 border-b border-text-primary/10 pb-24">
         <p className="text-xs uppercase tracking-[0.35em] text-text-muted">Projects</p>
         <div
-          className="grid gap-6 md:grid-cols-2"
+          className="divide-y divide-text-primary/10"
           onMouseLeave={() => setHoveredId(null)}
         >
           {projects.map((project) => {
@@ -163,52 +162,29 @@ export function ProjectsSection({ className = "" }: { className?: string }) {
                   layout: { type: "spring", stiffness: 140, damping: 18 },
                   duration: 0.25,
                 }}
-                className={`relative flex flex-col rounded-[2rem] border border-text-primary/10 bg-background p-3 transition duration-300 self-start ${
+                className={`group relative flex flex-col gap-4 py-8 transition duration-300 ${
                   isDimmed ? "blur-[2px] opacity-30" : "opacity-100"
-                } ${isActive ? "bg-surface" : ""}`}
+                }`}
                 onMouseEnter={() => setHoveredId(project.id)}
                 onFocus={() => setHoveredId(project.id)}
                 onBlur={() => setHoveredId(null)}
+                onMouseLeave={() => setHoveredId(null)}
                 tabIndex={0}
                 style={{ zIndex: isActive ? 70 : 10 }}
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-background">
-                  {isActive ? (
-                    <video
-                      key={project.id}
-                      src={project.demo}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="auto"
-                      className="h-full w-full object-cover"
-                    />
-                  ) : (
-                    <Image
-                      src={project.image}
-                      alt={project.name ?? "Project image"}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover"
-                      priority={project.id === projects[0].id}
-                    />
-                  )}
-                </div>
-
-                <div className="flex items-center justify-between px-2 pb-2 pt-4">
+                <div className="flex flex-col gap-4 px-2 md:flex-row md:items-center md:justify-between">
                   <a
-                    href={project.demo ?? "#"}
+                    href={project.link ?? "#"}
                     target="_blank"
                     rel="noreferrer"
-                    className="group inline-flex items-center gap-2 font-serif-italic text-2xl text-text-primary"
+                    className="inline-flex items-center gap-3 text-3xl text-text-primary sm:text-4xl"
                   >
-                    {project.name}
-                    <LinkArrow />
+                    <span className="font-serif-italic leading-tight">{project.name}</span>
+                    <LinkArrow className="h-5 w-5" />
                   </a>
-                  <span className="text-xs uppercase tracking-[0.35em] text-text-muted">
-                    {project.year}
-                  </span>
+                  <div className="flex flex-col gap-1 text-text-muted">
+                    <span className="text-xs uppercase tracking-[0.35em]">{project.year}</span>
+                  </div>
                 </div>
 
                 <motion.div
@@ -216,25 +192,35 @@ export function ProjectsSection({ className = "" }: { className?: string }) {
                   initial={false}
                   animate={
                     isActive
-                      ? { height: "auto", opacity: 1, marginTop: 16 }
+                      ? { height: "auto", opacity: 1, marginTop: 12 }
                       : { height: 0, opacity: 0, marginTop: 0 }
                   }
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="overflow-hidden px-2 pb-2"
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="overflow-hidden px-2"
                 >
                   {isActive && (
-                    <div className="rounded-[1.5rem] border border-text-primary/10 bg-surface p-4 text-text-primary">
-                      <div className="space-y-4 text-text-muted">
-                        <p className="text-base leading-relaxed">{project.description}</p>
-                        <div>
-                          <p className="text-[0.65rem] uppercase tracking-[0.35em]">Tech Stack</p>
-                          <p className="mt-2 text-sm leading-relaxed">
-                            {project.tech.join(" · ")}
-                          </p>
+                    <div className="rounded-3xl border border-text-primary/10 bg-surface p-6 text-text-primary">
+                      <div className="grid gap-6 md:grid-cols-[1.25fr,0.85fr]">
+                        <div className="relative overflow-hidden rounded-2xl bg-background">
+                          <div className="aspect-video">
+                            <video
+                              key={`${project.id}-video`}
+                              src={project.demo}
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              preload="auto"
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
                         </div>
-                        <div>
-                          <p className="text-[0.65rem] uppercase tracking-[0.35em]">Created</p>
-                          <p className="mt-2 text-sm">{project.year}</p>
+                        <div className="space-y-4 text-text-muted">
+                          <p className="text-base leading-relaxed">{project.description}</p>
+                          <div>
+                            <p className="text-[0.65rem] uppercase tracking-[0.35em]">Tech Stack</p>
+                            <p className="mt-2 text-sm leading-relaxed">{project.tech.join(" · ")}</p>
+                          </div>
                         </div>
                       </div>
                     </div>

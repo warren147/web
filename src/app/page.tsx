@@ -166,11 +166,11 @@ export default function Home() {
         </section>
 
         <div>
-          <ProjectsSection className={containerClass} />
+          <ExperienceSection className={containerClass} />
         </div>
 
         <div>
-          <ExperienceSection className={containerClass} />
+          <ProjectsSection className={containerClass} />
         </div>
       </div>
     </div>

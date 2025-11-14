@@ -9,11 +9,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://warrenchang.dev"),
   title: {
-    default: "Warren Chang — Software Engineer & ML Builder",
+    default: "boweichang.cv",
     template: "%s · Warren Chang",
   },
-  description:
-    "Portfolio for Warren Chang — software engineer building expressive interfaces, ML tooling, and high-trust systems.",
 };
 
 export default function RootLayout({
