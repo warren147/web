@@ -5,58 +5,147 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { LinkArrow } from "@/components/LinkArrow";
 
+// const projects = [
+//   {
+//     id: "code chatbot",
+//     name: "Code Chatbot",
+//     description:
+//       "Interactive chatbot leverages Retrieval-Augmented Generation (RAG), allowing users to discuss and analyze their code files.",
+//     tech: ["React", "Next.js", "Typescript", "Pinecone", "OpenAI"],
+//     year: "2024",
+//     image: "/projects/chatbot_TN.jpg",
+//     demo: "/projects/chatbot_demo.mov",
+//   },
+//   {
+//     id: "voronoi diagram",
+//     name: "Voronoi Diagram",
+//     description:
+//       "An application provides visual representation of the Voronoi Diagram given a set of points with multiple metrics.",
+//     tech: ["Java", "JavaAWT"],
+//     year: "2024",
+//     image: "/projects/VC_TN.jpeg",
+//     demo: "/projects/voronoi_demo.movpublic/projects/voronoi_demo.mov",
+//   },
+//   {
+//     id: "labs-atlas",
+//     name: "Labs Atlas",
+//     description:
+//       "Spatial review workflow for autonomy experiments with layered telemetry, label QA, and quick keyboard pilots.",
+//     tech: ["Three.js", "Python", "PyTorch", "Redis"],
+//     year: "2023",
+//     image: "/projects/project-3.svg",
+//     demo: "https://storage.googleapis.com/coverr-main/mp4/Footboys.mp4",
+//   },
+//   {
+//     id: "orbit-crm",
+//     name: "Orbit CRM",
+//     description:
+//       "Trusted relationship tracker for early-stage teams, built with a cinematic interface and gentle, opinionated flows.",
+//     tech: ["Next.js", "PlanetScale", "Tailwind", "Clerk"],
+//     year: "2023",
+//     image: "/projects/project-4.svg",
+//     demo: "https://storage.googleapis.com/coverr-main/mp4/White-Windmills.mp4",
+//   },
+//   {
+//     id: "signal-playbook",
+//     name: "Signal Playbook",
+//     description:
+//       "Knowledge surface for sharing ops rituals, incident retros, and nuanced playbooks across distributed teams.",
+//     tech: ["Remix", "SQLite", "Cloudflare Workers", "Shadcn"],
+//     year: "2022",
+//     image: "/projects/project-5.svg",
+//     demo: "https://storage.googleapis.com/coverr-main/mp4/Drift.mp4",
+//   },
+// ];
+
 const projects = [
   {
-    id: "code chatbot",
+    id: "code-chatbot",
     name: "Code Chatbot",
-    description:
-      "Interactive chatbot leverages Retrieval-Augmented Generation (RAG), allowing users to discuss and analyze their code files.",
-    tech: ["React", "Next.js", "Typescript", "Pinecone", "OpenAI"],
+    role: "Creator",
     year: "2024",
-    image: "/projects/chatbot_TN.jpg",
+    tech: ["Next.js", "LangChain", "Pinecone", "OpenAI"],
+    description:
+      "Conversational overlay that lets engineers interrogate large repositories with natural language and inline code diffs.",
+    metrics: ["10k+ LOC indexed", "2k+ monthly chats"],
+    link: "https://github.com/warren147/code-chatbot",
     demo: "/projects/chatbot_demo.mov",
+    image: {
+      src: "/projects/chatbot_TN.jpg",
+      alt: "Screens from the code chatbot interface",
+      blurDataURL: blur,
+    },
   },
   {
-    id: "voronoi diagram",
-    name: "Voronoi Diagram",
-    description:
-      "An application provides visual representation of the Voronoi Diagram given a set of points with multiple metrics.",
-    tech: ["Java", "JavaAWT"],
+    id: "voronoi-playground",
+    title: "Voronoi Diagram Visualizer",
+    role: "Product Engineer",
     year: "2024",
-    image: "/projects/VC_TN.jpeg",
-    demo: "/projects/voronoi_demo.movpublic/projects/voronoi_demo.mov",
+    tech: ["Java", "JavaAWT"],
+    description:
+      "An application provides visual representation of the Voronoi Diagram given a set of points with multiple metric.",
+    metrics: ["60 FPS on mobile", "<35% GPU utilization"],
+    link: "https://github.com/warren147/Voronoi_Diagram",
+    demo: "/projects/voronoi_demo.mov",
+    image: {  
+      src: "/projects/test.png",
+      alt: "Voronoi diagram rendered on a gradient background",
+      blurDataURL: blur,
+    },
   },
   {
-    id: "labs-atlas",
-    name: "Labs Atlas",
+    id: "notiom",
+    title: "Notiom",
+    role: "Engineer",
+    year: "2024",
+    tech: ["React", "Typescript", "Node.js", "MongoDB"],
     description:
-      "Spatial review workflow for autonomy experiments with layered telemetry, label QA, and quick keyboard pilots.",
-    tech: ["Three.js", "Python", "PyTorch", "Redis"],
+      "Developed a React web app that allows users save, edit, and share documents that are persisted to a MongoDB database.",
+    metrics: ["150+ reusable presets", "Exports in <4s"],
+    link: "https://github.com/warren147/Notiom",
+    demo: "/projects/notiom_demo.mov",
+    image: {
+      src: "/projects/notiom_TN.avif",
+      alt: "Collage of animated frames from Notiom",
+      blurDataURL: blur,
+    },
+  },
+  {
+    id: "cube-simulator",
+    title: "Cube Solver",
+    role: "Engineer",
+    year: "2024",
+    tech: ["Python", "PyGame", "Tkinter"],
+    description:
+      "A Python GUI application using Tkinter that generates a solution to a 3 x 3 Rubik’s Cube with Kociemba’s algorithm.",
+    metrics: ["<1s solve preview", "8x faster scrambles"],
+    link: "https://github.com/warren147/cube_solver",
+    demo: "/projects/cube_demo.mov",
+    image: {
+      src: "/projects/rbSolver_TN.jpg",
+      alt: "Rubik’s cube rendered with dramatic lighting",
+      blurDataURL: blur,
+    },
+  },
+  {
+    id: "pong-lab",
+    title: "Pong",
+    role: "Builder",
     year: "2023",
-    image: "/projects/project-3.svg",
-    demo: "https://storage.googleapis.com/coverr-main/mp4/Footboys.mp4",
-  },
-  {
-    id: "orbit-crm",
-    name: "Orbit CRM",
+    tech: ["Java", "JavaAWT"],
     description:
-      "Trusted relationship tracker for early-stage teams, built with a cinematic interface and gentle, opinionated flows.",
-    tech: ["Next.js", "PlanetScale", "Tailwind", "Clerk"],
-    year: "2023",
-    image: "/projects/project-4.svg",
-    demo: "https://storage.googleapis.com/coverr-main/mp4/White-Windmills.mp4",
-  },
-  {
-    id: "signal-playbook",
-    name: "Signal Playbook",
-    description:
-      "Knowledge surface for sharing ops rituals, incident retros, and nuanced playbooks across distributed teams.",
-    tech: ["Remix", "SQLite", "Cloudflare Workers", "Shadcn"],
-    year: "2022",
-    image: "/projects/project-5.svg",
-    demo: "https://storage.googleapis.com/coverr-main/mp4/Drift.mp4",
+      "Pong game for fun!",
+    metrics: ["2 ms input latency", "Dynamic pitch mapping"],
+    link: "https://github.com/warren147/Pong",
+    demo: "/projects/pong_demo.mov",
+    image: {
+      src: "/projects/Pong_TN.jpg",
+      alt: "Stylized pong interface with gradients",
+      blurDataURL: blur,
+    },
   },
 ];
+
 
 export function ProjectsSection({ className = "" }: { className?: string }) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
