@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LinkArrow } from "@/components/LinkArrow";
 
 // const projects = [
@@ -128,6 +128,24 @@ const projects = [
 
 export function ProjectsSection({ className = "" }: { className?: string }) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  useEffect(() => {
+    const preloadLinks = projects.map((project) => {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "video";
+      link.href = project.demo;
+      document.head.appendChild(link);
+      return link;
+    });
+
+    return () => {
+      preloadLinks.forEach((link) => {
+        if (link.parentNode) {
+          link.parentNode.removeChild(link);
+        }
+      });
+    };
+  }, []);
 
   return (
     <section id="projects" className={className}>
