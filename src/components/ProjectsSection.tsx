@@ -74,7 +74,7 @@ const projects = [
   },
   {
     id: "voronoi-playground",
-    title: "Voronoi Diagram Visualizer",
+    name: "Voronoi Diagram Visualizer",
     role: "Product Engineer",
     year: "2024",
     tech: ["Java", "JavaAWT"],
@@ -87,7 +87,7 @@ const projects = [
   },
   {
     id: "notiom",
-    title: "Notiom",
+    name: "Notiom",
     role: "Engineer",
     year: "2024",
     tech: ["React", "Typescript", "Node.js", "MongoDB"],
@@ -100,7 +100,7 @@ const projects = [
   },
   {
     id: "cube-simulator",
-    title: "Cube Solver",
+    name: "Cube Solver",
     role: "Engineer",
     year: "2024",
     tech: ["Python", "PyGame", "Tkinter"],
@@ -113,7 +113,7 @@ const projects = [
   },
   {
     id: "pong-lab",
-    title: "Pong",
+    name: "Pong",
     role: "Builder",
     year: "2023",
     tech: ["Java", "JavaAWT"],
