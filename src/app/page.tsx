@@ -9,7 +9,7 @@ const socialLinks = [
     href: "mailto:warrenbluechg@gmail.com",
     icon: (
       <svg
-        viewBox="0 0 24 24"
+        viewBox="0 0 24 24" 
         role="img"
         aria-hidden="true"
         className="h-5 w-5"

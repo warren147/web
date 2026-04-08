@@ -18,17 +18,6 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
-    id: "tiktok",
-    company: "TikTok",
-    position: "Incoming Software Engineer Intern",
-    period: "Fall 2026",
-    details:
-      "PGC AI Platform Team",
-    tech: [],
-    logo: "/logos/tiktok_logo.jpeg",
-    link: "https://www.tiktok.com/",
-  },
-  {
     id: "salesforce",
     company: "Salesforce",
     position: "Incoming Software Engineer Intern",
@@ -38,6 +27,17 @@ const experiences: Experience[] = [
     tech: [],
     logo: "/logos/salesforce_logo.jpeg",
     link: "https://www.salesforce.com/",
+  },
+  {
+    id: "nirmata",
+    company: "Nirmata",
+    position: "AI Engineer Intern",
+    period: "02/2026 - Present",
+    details:
+      "Building core features of Nirmata's AI-powered CLI agent",
+    tech: [],
+    logo: "/logos/nirmata_logo.jpeg",
+    link: "https://nirmata.com/nctl-ai/",
   },
   {
     id: "tsmc",

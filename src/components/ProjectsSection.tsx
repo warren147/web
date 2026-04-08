@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LinkArrow } from "@/components/LinkArrow";
 
 // const projects = [
@@ -128,22 +128,31 @@ const projects = [
 
 export function ProjectsSection({ className = "" }: { className?: string }) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const preloadedVideosRef = useRef<Record<string, HTMLVideoElement>>({});
+
   useEffect(() => {
-    const preloadLinks = projects.map((project) => {
-      const link = document.createElement("link");
-      link.rel = "preload";
-      link.as = "video";
-      link.href = project.demo;
-      document.head.appendChild(link);
-      return link;
+    // Preload video assets as soon as the page mounts so hover playback is instant.
+    const videos: Record<string, HTMLVideoElement> = {};
+
+    projects.forEach((project) => {
+      const video = document.createElement("video");
+      video.src = project.demo;
+      video.preload = "auto";
+      video.muted = true;
+      video.playsInline = true;
+      video.load();
+      videos[project.id] = video;
     });
 
+    preloadedVideosRef.current = videos;
+
     return () => {
-      preloadLinks.forEach((link) => {
-        if (link.parentNode) {
-          link.parentNode.removeChild(link);
-        }
+      Object.values(preloadedVideosRef.current).forEach((video) => {
+        video.pause();
+        video.removeAttribute("src");
+        video.load();
       });
+      preloadedVideosRef.current = {};
     };
   }, []);
 
