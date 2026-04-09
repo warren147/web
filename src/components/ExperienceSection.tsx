@@ -36,7 +36,7 @@ const experiences: Experience[] = [
     details:
       "Building core features of Nirmata's AI-powered CLI agent",
     tech: [],
-    logo: "/logos/nirmata_logo.jpeg",
+    logo: "/logos/nirmata.png",
     link: "https://nirmata.com/nctl-ai/",
   },
   {
